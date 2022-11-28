@@ -8,8 +8,8 @@
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         Title="PhotoWindow"
-        Height="420"
-        Width="600">
+        Height="500"
+        Width="400">
     <Grid Background="{StaticResource wrapPanelColor}">
 
         <Grid.RowDefinitions>
@@ -20,7 +20,7 @@
             <RowDefinition Height="5"/>
         </Grid.RowDefinitions>
 
-        
+
         <!-- Menu -->
         <Menu Grid.Row="0" Background="{StaticResource mainColor}">
 
@@ -77,9 +77,10 @@
             </MenuItem>
         </Menu>
 
-        
+
         <!-- Back button -->
         <Button Grid.Row="1" 
+                ToolTip="Back Window"
                 Click="Button_Click"
                 HorizontalAlignment="Left"
                 BorderThickness="0"
@@ -94,12 +95,12 @@
             </Ellipse>
         </Button>
 
-        
+
         <!-- UserControl Binding -->
         <Grid Grid.Row="2"
               Name="mygrid"/>
 
-        
+
         <!-- Prev Next Pause Button -->
         <StackPanel Grid.Row="3" 
                     Orientation="Horizontal"
@@ -107,6 +108,7 @@
             <Button BorderThickness="0"
                     Click="Previous_Click"
                     Name="Previous"
+                    ToolTip="Previos Image"
                     Background="Transparent"
                     Width="50">
                 <Ellipse Width="50"
@@ -118,9 +120,10 @@
                 </Ellipse>
             </Button>
 
-            
+
             <Button BorderThickness="0"
                     Width="50"
+                    ToolTip="Pause image"
                     Click="Previous_Click"
                     Background="Transparent"
                     Name="Pause"
@@ -137,6 +140,7 @@
             <Button BorderThickness="0"
                     Width="50"
                     Click="Previous_Click"
+                    ToolTip="Play Galary' image"
                     Name="Play"
                     Background="Transparent"
                     Margin="2">
@@ -151,6 +155,7 @@
 
             <Button BorderThickness="0"
                     Width="50"
+                    ToolTip="Next Image"
                     Click="Previous_Click"
                     Name="Next"
                     Background="Transparent"
@@ -165,6 +170,6 @@
             </Button>
         </StackPanel>
 
-        
+
     </Grid>
 </Window>

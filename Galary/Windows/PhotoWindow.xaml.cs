@@ -2,33 +2,37 @@
 using Galary.UserControls;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Galary.Windows;
 
+
+
 public partial class PhotoWindow : Window
 {
+    public DispatcherTimer Timer { get; set; }
+
+    public UserControl_Photos user { get; set; }
     public List<GalaryImage> Galaries { get; set; }
-    public PhotoWindow(ImageSource source, GalaryImage image, List<GalaryImage> GalaryImages)
+
+
+
+    public PhotoWindow(ImageSource image, GalaryImage page, List<GalaryImage> GalaryImages)
     {
         InitializeComponent();
+        Timer = new();
+
 
         Galaries = new();
         Galaries = GalaryImages;
 
+        UserControl_Photos photo = new(image, page);
 
-        UserControl_Photos photo = new(source, image);
-
+        user = photo;
         mygrid.Children.Add(photo);
     }
 
@@ -42,20 +46,66 @@ public partial class PhotoWindow : Window
         switch (btn!.Name)
         {
             case "Previous":
-                MessageBox.Show("ok1");
+
+                try
+                {
+                    UserControl_Photos photo = new(new BitmapImage(new Uri(Galaries[Galaries.IndexOf(user.Photo) - 1]!.ImageUrl!, UriKind.Relative)), Galaries[Galaries.IndexOf(user.Photo) - 1]);
+                    user = photo;
+
+                    mygrid.Children.Add(photo);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Information", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+
                 break;
             case "Pause":
-                MessageBox.Show("ok2");
+                Timer.Stop();
                 break;
             case "Play":
-                MessageBox.Show("ok3");
+
+                Timer.Interval = TimeSpan.FromMilliseconds(2000);
+                Timer.Tick += Timer_Tick;
+                Timer.Start();
+
                 break;
             case "Next":
-                MessageBox.Show("ok4");
+
+                try
+                {
+                    UserControl_Photos photo = new(new BitmapImage(new Uri(Galaries[Galaries.IndexOf(user.Photo) + 1]!.ImageUrl!, UriKind.Relative)), Galaries[Galaries.IndexOf(user.Photo) + 1]);
+                    user = photo;
+
+                    mygrid.Children.Add(photo);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Information", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+
                 break;
-            default:
-                break;
+
         }
 
+    }
+
+    private void Timer_Tick(object? sender, EventArgs e)
+    {
+        try
+        {
+            UserControl_Photos photo = new(new BitmapImage(new Uri(Galaries[Galaries.IndexOf(user.Photo) + 1]!.ImageUrl!, UriKind.Relative)), Galaries[Galaries.IndexOf(user.Photo) + 1]);
+            user = photo;
+
+            mygrid.Children.Clear();
+            mygrid.Children.Add(photo);
+
+
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.Message, "Information", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            Timer.Stop();
+        }
     }
 }
