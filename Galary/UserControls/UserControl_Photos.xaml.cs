@@ -10,10 +10,10 @@ namespace Galary.UserControls;
 
 public partial class UserControl_Photos : UserControl, INotifyPropertyChanged
 {
-    public event PropertyChangedEventHandler PropertyChanged;
-    protected void OnPropertyChanged([CallerMemberName] string name = null)
+    public event PropertyChangedEventHandler? PropertyChanged;
+    protected void OnPropertyChanged([CallerMemberName] string name = null!)
     {
-        PropertyChangedEventHandler handler = PropertyChanged;
+        PropertyChangedEventHandler handler = PropertyChanged!;
         if (handler != null)
         {
             handler(this, new PropertyChangedEventArgs(name));
@@ -54,4 +54,5 @@ public partial class UserControl_Photos : UserControl, INotifyPropertyChanged
         CurrentImageSource = source;
         DataContext = this;
     }
+
 }

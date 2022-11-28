@@ -43,7 +43,7 @@ public partial class MainWindow : Window
         var uc = sender as UserControl_Photos;
 
 
-        Windows.PhotoWindow window = new(uc.CurrentImageSource, uc.Photo, GalaryImages);
+        Windows.PhotoWindow window = new(uc!.CurrentImageSource, uc.Photo, GalaryImages);
 
         window.ShowDialog();
 
