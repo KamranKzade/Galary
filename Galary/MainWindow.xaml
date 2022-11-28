@@ -6,10 +6,11 @@
         xmlns:local="clr-namespace:Galary"
         mc:Ignorable="d"
         Title="Galary"
+        Icon="/Images/Galary.png"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
-        Height="600"
-        Width="800">
+        Height="750"
+        Width="1350">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="35"/>
@@ -74,9 +75,9 @@
     
         <!-- Galary -->
         <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto">
-            <StackPanel Name="wrapPanel" Background="{StaticResource wrapPanelColor}">
+            <UniformGrid Name="wrapPanel" Background="{StaticResource wrapPanelColor}">
                 
-            </StackPanel>
+            </UniformGrid>
         </ScrollViewer>    
     
         

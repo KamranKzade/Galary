@@ -20,7 +20,7 @@ public class FakeRepo
                  Author ="Leonardo da Vinçi",
                  Name = "Mono Lisa",
                  Time = new DateTime(1503,1, 1),
-                 ImageUrl = "/Images/monoLisa.png"
+                 ImageUrl = "../../../Images/monoLisa.png"
             },
             new Models.GalaryImage()
             {
@@ -64,12 +64,7 @@ public class FakeRepo
                  Time = new DateTime(1511,1, 1),
                  ImageUrl = "../../../Images/afina.png"
             },
-
         };
 
-
-
-
     }
-
 }

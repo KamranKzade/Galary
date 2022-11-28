@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <None Remove="close-window.png" />
+    <None Remove="Galary.png" />
     <None Remove="Images\close-window.png" />
     <None Remove="Images\save %281%29.png" />
     <None Remove="Images\save-as.png" />
@@ -24,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\Galary.png" />
     <Resource Include="Images\close-window.png" />
     <Resource Include="Images\new.png" />
     <Resource Include="Images\opened-folder.png" />

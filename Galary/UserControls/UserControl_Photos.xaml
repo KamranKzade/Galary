@@ -6,35 +6,37 @@
              xmlns:local="clr-namespace:Galary.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel Background="Coral" Margin="5" >
+    <StackPanel Background="{StaticResource userControl_background}" Margin="5" >
 
         <Label Content="{Binding Photo.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                    Margin="5"
                    HorizontalAlignment="Center"
-                   Foreground="{StaticResource mainColor}"
+                   Foreground="{StaticResource userControl}"
                    FontSize="{StaticResource MenuItemSize}"/>
 
-        <Ellipse Width="500"
-                 Margin="2"
-                 Height="200">
+
+        <Ellipse Margin="2"
+                 Height="200"
+                 Width="350">
             <Ellipse.Fill>
-                <!-- Image.Url -->
-                <ImageBrush  ImageSource="{Binding Photo.ImageUrl, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                             Stretch="Uniform"></ImageBrush>
+                <ImageBrush x:Name="Picture" 
+                            ImageSource="{Binding CurrentImageSource, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            Stretch="Fill" 
+                           />
             </Ellipse.Fill>
         </Ellipse>
+
 
         <Label Content="{Binding Photo.Author, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                    Margin="2"
                    HorizontalAlignment="Center"
-                   Foreground="{StaticResource mainColor}"
+                   Foreground="{StaticResource userControl}"
                    FontSize="{StaticResource MenuItemSize}"/>
 
         <Label Content="{Binding Photo.Time, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                    HorizontalAlignment="Center"
-                   Foreground="{StaticResource mainColor}"
+                   Foreground="{StaticResource userControl}"
                    FontSize="{StaticResource MenuItemSize}"/>
     </StackPanel>
-
 
 </UserControl>
