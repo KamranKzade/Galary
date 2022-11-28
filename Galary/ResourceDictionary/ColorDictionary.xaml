@@ -1,0 +1,16 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <LinearGradientBrush x:Key="mainColor">
+        <GradientStop Color="Red" Offset="0"></GradientStop>
+        <GradientStop Color="Orange" Offset="0.25" ></GradientStop>
+        <GradientStop Color="Yellow" Offset="0.5" ></GradientStop>
+        <GradientStop Color="Blue" Offset="1" ></GradientStop>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="wrapPanelColor">
+        <GradientStop Color="#59C173" Offset="0"></GradientStop>
+        <GradientStop Color="#a17fe0" Offset="0.5" ></GradientStop>
+        <GradientStop Color="#5D26C1" Offset="1" ></GradientStop>
+    </LinearGradientBrush>
+
+</ResourceDictionary>
