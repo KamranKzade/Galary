@@ -3,6 +3,8 @@ using Galary.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Media.Imaging;
 
 namespace Galary;
@@ -12,6 +14,10 @@ namespace Galary;
 public partial class MainWindow : Window
 {
     public List<GalaryImage> GalaryImages { get; set; }
+    public GalaryImage importantData { get; set; }
+    public BitmapImage CurrentPicture { get; set; }
+ 
+    
     public MainWindow()
     {
         InitializeComponent();
@@ -20,12 +26,28 @@ public partial class MainWindow : Window
 
         foreach (var image in GalaryImages)
         {
-            var picture = new BitmapImage(new Uri(image!.ImageUrl!, UriKind.Relative));
+            BitmapImage picture = new BitmapImage(new Uri(image!.ImageUrl!, UriKind.Relative));
+            CurrentPicture = picture;
 
+            importantData = image;
 
-            UserControl_Photos photo = new(picture, image);
+            UserControl_Photos photo = new (picture, image);
             wrapPanel.Children.Add(photo);
 
+            photo.MouseDoubleClick += Photo_MouseDoubleClick;
         }
+
+        
+    }
+
+    private void Photo_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+    {
+        var uc = sender as UserControl_Photos ;
+
+
+      Windows.PhotoWindow window = new(uc.CurrentImageSource, uc.Photo, GalaryImages);
+
+      window.ShowDialog();
+
     }
 }

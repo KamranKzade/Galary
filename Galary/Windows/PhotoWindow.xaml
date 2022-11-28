@@ -1,19 +1,26 @@
-﻿<Window x:Class="Galary.PhotoWindow"
+﻿<Window x:Class="Galary.Windows.PhotoWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Galary"
+        xmlns:local="clr-namespace:Galary.Windows"
         mc:Ignorable="d"
-        Title="PhotoWindow" Height="450" Width="800">
-    <Grid>
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Title="PhotoWindow"
+        Height="420"
+        Width="600">
+    <Grid Background="{StaticResource wrapPanelColor}">
+
         <Grid.RowDefinitions>
             <RowDefinition Height="35"/>
             <RowDefinition Height="35"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="45"/>
+            <RowDefinition Height="5"/>
         </Grid.RowDefinitions>
 
+        
         <!-- Menu -->
         <Menu Grid.Row="0" Background="{StaticResource mainColor}">
 
@@ -70,58 +77,94 @@
             </MenuItem>
         </Menu>
 
+        
         <!-- Back button -->
         <Button Grid.Row="1" 
+                Click="Button_Click"
                 HorizontalAlignment="Left"
                 BorderThickness="0"
                 Width="50"
+                Background="Transparent"
                 Margin="2">
-            <Button.Background>
-                <ImageBrush ImageSource="/Images/back.png" Stretch="Uniform"/>
-            </Button.Background>
+            <Ellipse Width="50"
+                     Height="25">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="/Images/back.png" Stretch="Uniform"/>
+                </Ellipse.Fill>
+            </Ellipse>
         </Button>
 
+        
         <!-- UserControl Binding -->
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="2"
+              Name="mygrid"/>
 
-        </Grid>
-
+        
         <!-- Prev Next Pause Button -->
         <StackPanel Grid.Row="3" 
                     Orientation="Horizontal"
                     HorizontalAlignment="Center">
             <Button BorderThickness="0"
+                    Click="Previous_Click"
+                    Name="Previous"
+                    Background="Transparent"
+                    Width="50">
+                <Ellipse Width="50"
+                         Margin="0 0 0 5"
+                         Height="35">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="/Images/prev.png" Stretch="Uniform"/>
+                    </Ellipse.Fill>
+                </Ellipse>
+            </Button>
+
+            
+            <Button BorderThickness="0"
                     Width="50"
+                    Click="Previous_Click"
+                    Background="Transparent"
+                    Name="Pause"
                     Margin="2">
-                <Button.Background>
-                    <ImageBrush ImageSource="/Images/prev.png" Stretch="Uniform"/>
-                </Button.Background>
+                <Ellipse Width="50"
+                         Margin="0 0 0 5"
+                         Height="35">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="/Images/pause.png" Stretch="Uniform"/>
+                    </Ellipse.Fill>
+                </Ellipse>
             </Button>
 
             <Button BorderThickness="0"
                     Width="50"
+                    Click="Previous_Click"
+                    Name="Play"
+                    Background="Transparent"
                     Margin="2">
-                <Button.Background>
-                    <ImageBrush ImageSource="/Images/pause.png" Stretch="Uniform"/>
-                </Button.Background>
+                <Ellipse Width="50"
+                         Margin="0 0 0 5"
+                         Height="35">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="/Images/play.png" Stretch="Uniform"/>
+                    </Ellipse.Fill>
+                </Ellipse>
             </Button>
 
             <Button BorderThickness="0"
                     Width="50"
+                    Click="Previous_Click"
+                    Name="Next"
+                    Background="Transparent"
                     Margin="2">
-                <Button.Background>
-                    <ImageBrush ImageSource="/Images/play.png" Stretch="Uniform"/>
-                </Button.Background>
-            </Button>
-
-            <Button BorderThickness="0"
-                    Width="50"
-                    Margin="2">
-                <Button.Background>
-                    <ImageBrush ImageSource="/Images/next.png" Stretch="Uniform"/>
-                </Button.Background>
+                <Ellipse Width="50"
+                         Margin="0 0 0 5"
+                         Height="35">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="/Images/next.png" Stretch="Uniform"/>
+                    </Ellipse.Fill>
+                </Ellipse>
             </Button>
         </StackPanel>
 
+        
     </Grid>
 </Window>

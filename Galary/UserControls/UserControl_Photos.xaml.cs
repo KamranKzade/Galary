@@ -22,16 +22,19 @@ public partial class UserControl_Photos : UserControl, INotifyPropertyChanged
 
 
     private GalaryImage photo;
+    private ImageSource _currentImageSource;
+    
+
+    
     public GalaryImage Photo
     {
         get { return photo; }
-        set { photo = value; OnPropertyChanged(); }
+        set 
+        {
+            photo = value;
+            OnPropertyChanged(); 
+        }
     }
-
-
-
-    private ImageSource _currentImageSource;
-
     public ImageSource CurrentImageSource
     {
         get { return _currentImageSource; }
@@ -42,6 +45,7 @@ public partial class UserControl_Photos : UserControl, INotifyPropertyChanged
         }
     }
 
+
     public UserControl_Photos(ImageSource source,GalaryImage image)
     {
         InitializeComponent();
@@ -50,6 +54,4 @@ public partial class UserControl_Photos : UserControl, INotifyPropertyChanged
         CurrentImageSource = source;
         DataContext = this;
     }
-
-
 }
