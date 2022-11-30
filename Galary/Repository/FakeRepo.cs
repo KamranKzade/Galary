@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
-
+using System.Collections.ObjectModel;
 
 namespace Galary.Repository;
 
@@ -10,9 +9,9 @@ namespace Galary.Repository;
 public class FakeRepo
 {
 
-    public static List<Models.GalaryImage> GetGalaryImages()
+    public static ObservableCollection<Models.GalaryImage> GetGalaryImages()
     {
-        return new List<Models.GalaryImage>()
+        return new ObservableCollection<Models.GalaryImage>()
         {
             new Models.GalaryImage()
             {

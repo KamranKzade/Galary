@@ -2,6 +2,7 @@
 using Galary.UserControls;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -17,11 +18,11 @@ public partial class PhotoWindow : Window
     public DispatcherTimer Timer { get; set; }
 
     public UserControl_Photos user { get; set; }
-    public List<GalaryImage> Galaries { get; set; }
+    public ObservableCollection<GalaryImage> Galaries { get; set; }
 
 
 
-    public PhotoWindow(ImageSource image, GalaryImage page, List<GalaryImage> GalaryImages)
+    public PhotoWindow(ImageSource image, GalaryImage page, ObservableCollection<GalaryImage> GalaryImages)
     {
         InitializeComponent();
         Timer = new();

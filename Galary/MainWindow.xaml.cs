@@ -1,9 +1,11 @@
 ﻿using Galary.Models;
 using Galary.UserControls;
+using Galary.Windows;
 using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
 namespace Galary;
@@ -12,7 +14,31 @@ namespace Galary;
 
 public partial class MainWindow : Window
 {
-    public List<GalaryImage> GalaryImages { get; set; }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+    protected void OnPropertyChanged([CallerMemberName] string name = null!)
+    {
+        PropertyChangedEventHandler handler = PropertyChanged!;
+        if (handler != null)
+        {
+            handler(this, new PropertyChangedEventArgs(name));
+        }
+    }
+
+
+    private ObservableCollection<GalaryImage> galaryImages;
+
+    public ObservableCollection<GalaryImage> GalaryImages
+    {
+        get { return galaryImages; }
+        set 
+        {
+            galaryImages = value;
+            OnPropertyChanged();
+        }
+    }
+    
+
     public BitmapImage CurrentPicture { get; set; }
 
 
@@ -53,8 +79,13 @@ public partial class MainWindow : Window
     private void MenuItem_Click(object sender, RoutedEventArgs e) => wrapPanel.Columns = 4;
     private void MenuItem_Click_1(object sender, RoutedEventArgs e) => wrapPanel.Columns = 2;
 
+
     private void Add_Image(object sender, RoutedEventArgs e)
     {
+        Add_Image_Window add = new();
+        add.ShowDialog();
 
+        Repository.FakeRepo.GetGalaryImages().Add(add.Image);
+        GalaryImages.Add(add.Image);
     }
 }

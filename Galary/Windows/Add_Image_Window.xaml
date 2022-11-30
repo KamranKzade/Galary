@@ -1,16 +1,21 @@
-﻿<UserControl x:Class="Galary.UserControls.UserControl_Add_Image"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Galary.UserControls"
-             mc:Ignorable="d" 
-             d:DesignHeight="520" d:DesignWidth="700">
-
+﻿<Window x:Class="Galary.Windows.Add_Image_Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Galary.Windows"
+        mc:Ignorable="d"
+        Background="YellowGreen"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Title="Add Image"
+        Height="600"
+        Width="700">
     <StackPanel Background="{StaticResource userControl_background}" 
                 Margin="10" >
-
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+        <StackPanel Orientation="Horizontal" 
+                    Margin="10"
+                    HorizontalAlignment="Center">
             <Label Content="Image Name"
                    Margin="5"
                    Width="150"
@@ -20,11 +25,14 @@
                    FontSize="{StaticResource MenuItemSize}"/>
 
             <TextBox Margin="5"
-                 Width="300"
-                 Background="Transparent"
-                 HorizontalAlignment="Center"
-                 Foreground="{StaticResource userControl}"
-                 FontSize="{StaticResource MenuItemSize}"/>
+                     Width="300"
+                     Name="image_name"
+                     HorizontalContentAlignment="Center"
+                     VerticalContentAlignment="Center"
+                     Background="Transparent"
+                     HorizontalAlignment="Center"
+                     Foreground="{StaticResource userControl}"
+                     FontSize="{StaticResource MenuItemSize}"/>
 
         </StackPanel>
 
@@ -32,12 +40,13 @@
         <StackPanel>
 
             <Ellipse Margin="2"
-                 Height="200"
-                 Width="350">
+                     Height="200"
+                     AllowDrop="True"
+                     DragEnter="Profile_Photo_DragEnter"
+                     Width="350">
                 <Ellipse.Fill>
                     <ImageBrush x:Name="Picture" 
-                            ImageSource="{Binding CurrentImageSource, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                            Stretch="Fill" 
+                                Stretch="Fill" 
                            />
                 </Ellipse.Fill>
             </Ellipse>
@@ -50,15 +59,19 @@
                     FontWeight="Medium"
                     FontSize="{StaticResource MenuSize}"
                     Foreground="{StaticResource wrapPanelColor}"
-                    Click="Drop_Image"
+                    Click="Add_Image_Button"
                     BorderThickness="0"
                     Background="Chocolate">
-                
+
             </Button>
         </StackPanel>
 
-        <StackPanel Orientation="Horizontal"
-                    HorizontalAlignment="Center">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.85*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
             <Label Content="Author Name"
                    Margin="5"
                    Width="150"
@@ -68,13 +81,17 @@
                    FontSize="{StaticResource MenuItemSize}"/>
 
             <TextBox Margin="5"
+                     Grid.Column="1"
+                     Name="author_name"
                      Width="300"
+                     HorizontalContentAlignment="Center"
+                     VerticalContentAlignment="Center"
                      Background="Transparent"
                      HorizontalAlignment="Center"
                      Foreground="{StaticResource userControl}"
                      FontSize="{StaticResource MenuItemSize}"/>
 
-        </StackPanel>
+        </Grid>
 
 
         <StackPanel Orientation="Horizontal" 
@@ -88,6 +105,9 @@
 
             <TextBox Margin="5"
                      Width="300"
+                     HorizontalContentAlignment="Center"
+                     Name="creation_name"
+                     VerticalContentAlignment="Center"
                      Background="Transparent"
                      HorizontalAlignment="Center"
                      Foreground="{StaticResource userControl}"
@@ -97,16 +117,21 @@
 
         <Button HorizontalAlignment="Center"
                 Width="150"
-                Click="Add_Image"
+                Click="Button_Click"
                 BorderThickness="0"
-                Height="80">
-            <Button.Background>
-                <ImageBrush ImageSource="/Images/add_image.png" Stretch="Uniform"/>
-            </Button.Background>
+                Background="Transparent"
+                Height="70">
+            <Ellipse Width="140"
+                     Height="60">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="/Images/add_image.png" Stretch="Uniform"/>
+                </Ellipse.Fill>
+            </Ellipse>
+
         </Button>
 
 
     </StackPanel>
 
 
-</UserControl>
+</Window>
