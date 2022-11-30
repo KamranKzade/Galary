@@ -52,7 +52,9 @@ public partial class MainWindow : Window
 
     private void MenuItem_Click(object sender, RoutedEventArgs e) => wrapPanel.Columns = 4;
     private void MenuItem_Click_1(object sender, RoutedEventArgs e) => wrapPanel.Columns = 2;
-   
 
+    private void Add_Image(object sender, RoutedEventArgs e)
+    {
 
+    }
 }
