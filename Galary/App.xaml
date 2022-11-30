@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:Galary" xmlns:sys="clr-namespace:System;assembly=netstandard"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        
+
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="ResourceDictionary/ColorDictionary.xaml"/>

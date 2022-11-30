@@ -47,7 +47,6 @@ public partial class MainWindow : Window
         GalaryImages = new();
         GalaryImages = Repository.FakeRepo.GetGalaryImages();
 
-
         foreach (var image in GalaryImages)
         {
             BitmapImage picture = new BitmapImage(new Uri(image!.ImageUrl!, UriKind.Relative));
@@ -60,6 +59,8 @@ public partial class MainWindow : Window
             photo.MouseDoubleClick += Photo_MouseDoubleClick;
         }
 
+        MessageBox.Show (@"if you want to add a picture
+Edit -> Add Image", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
 
     }
 
@@ -75,8 +76,9 @@ public partial class MainWindow : Window
 
     }
 
-    private void MenuItem_Click(object sender, RoutedEventArgs e) => wrapPanel.Columns = 4;
     private void MenuItem_Click_1(object sender, RoutedEventArgs e) => wrapPanel.Columns = 2;
+    private void MenuItem_Click_2(object sender, RoutedEventArgs e) => wrapPanel.Columns = 3;
+    private void MenuItem_Click(object sender, RoutedEventArgs e) => wrapPanel.Columns = 4;
 
 
     private void Add_Image(object sender, RoutedEventArgs e)
@@ -85,10 +87,13 @@ public partial class MainWindow : Window
         add.ShowDialog();
 
         BitmapImage picture = new BitmapImage(new Uri(add.filePath!, UriKind.Relative));
+
         UserControl_Photos uc = new(picture, add.Image);
 
         wrapPanel.Children.Add(uc);
         GalaryImages.Add(add.Image);
 
     }
+
+    
 }

@@ -63,9 +63,9 @@
             </MenuItem>
 
             <MenuItem FontSize="{StaticResource MenuSize}" Header="View">
-                <MenuItem FontSize="{StaticResource MenuItemSize}"  Click="MenuItem_Click_1" Header="Large Icon" ></MenuItem>
                 <MenuItem FontSize="{StaticResource MenuItemSize}" Click="MenuItem_Click" Header="Small Icon" ></MenuItem>
-                <MenuItem FontSize="{StaticResource MenuItemSize}" Header="Details" ></MenuItem>
+                <MenuItem FontSize="{StaticResource MenuItemSize}" Header="Normad Icon" Click="MenuItem_Click_2" ></MenuItem>
+                <MenuItem FontSize="{StaticResource MenuItemSize}"  Click="MenuItem_Click_1" Header="Large Icon" ></MenuItem>
             </MenuItem>
 
             <MenuItem FontSize="{StaticResource MenuSize}" Header="About">
