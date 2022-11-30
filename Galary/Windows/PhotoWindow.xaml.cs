@@ -16,7 +16,6 @@ namespace Galary.Windows;
 public partial class PhotoWindow : Window
 {
     public DispatcherTimer Timer { get; set; }
-
     public UserControl_Photos user { get; set; }
     public ObservableCollection<GalaryImage> Galaries { get; set; }
 
@@ -37,7 +36,9 @@ public partial class PhotoWindow : Window
         mygrid.Children.Add(photo);
     }
 
+
     private void Button_Click(object sender, RoutedEventArgs e) => Close();
+
 
     private void Previous_Click(object sender, RoutedEventArgs e)
     {
@@ -61,16 +62,6 @@ public partial class PhotoWindow : Window
                 }
 
                 break;
-            case "Pause":
-                Timer.Stop();
-                break;
-            case "Play":
-
-                Timer.Interval = TimeSpan.FromMilliseconds(2000);
-                Timer.Tick += Timer_Tick;
-                Timer.Start();
-
-                break;
             case "Next":
 
                 try
@@ -90,6 +81,26 @@ public partial class PhotoWindow : Window
         }
 
     }
+
+
+    private void Play_Pause(object sender, RoutedEventArgs e)
+    {
+        if (Pause.IsChecked == true)
+        {
+            pausePicture.ImageSource = new BitmapImage(new Uri("../../../Images/play.png"!, UriKind.Relative));
+
+            Timer.Interval = TimeSpan.FromMilliseconds(2000);
+            Timer.Tick += Timer_Tick;
+            Timer.Start();
+        }
+        else
+        {
+            pausePicture.ImageSource = new BitmapImage(new Uri("../../../Images/pause.png"!, UriKind.Relative));
+            Timer.Stop();
+        }
+
+    }
+
 
     private void Timer_Tick(object? sender, EventArgs e)
     {
