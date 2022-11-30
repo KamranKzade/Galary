@@ -30,5 +30,10 @@ namespace Galary.UserControls
         {
 
         }
+
+        private void Drop_Image(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

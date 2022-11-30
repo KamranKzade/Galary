@@ -5,8 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Galary.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="470" d:DesignWidth="700">
-    
+             d:DesignHeight="520" d:DesignWidth="700">
+
     <StackPanel Background="{StaticResource userControl_background}" 
                 Margin="10" >
 
@@ -29,17 +29,33 @@
         </StackPanel>
 
 
-        <Ellipse Margin="2"
+        <StackPanel>
+
+            <Ellipse Margin="2"
                  Height="200"
                  Width="350">
-            <Ellipse.Fill>
-                <ImageBrush x:Name="Picture" 
+                <Ellipse.Fill>
+                    <ImageBrush x:Name="Picture" 
                             ImageSource="{Binding CurrentImageSource, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                             Stretch="Fill" 
                            />
-            </Ellipse.Fill>
-        </Ellipse>
+                </Ellipse.Fill>
+            </Ellipse>
 
+            <Button HorizontalAlignment="Center"
+                    Margin="10"
+                    Padding="10"
+                    Content="Add Image"
+                    FontFamily="Comic Sans Ms"
+                    FontWeight="Medium"
+                    FontSize="{StaticResource MenuSize}"
+                    Foreground="{StaticResource wrapPanelColor}"
+                    Click="Drop_Image"
+                    BorderThickness="0"
+                    Background="Chocolate">
+                
+            </Button>
+        </StackPanel>
 
         <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Center">
@@ -89,8 +105,8 @@
             </Button.Background>
         </Button>
 
-        
+
     </StackPanel>
-    
-    
+
+
 </UserControl>

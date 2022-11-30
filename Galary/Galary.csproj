@@ -17,6 +17,7 @@
     <None Remove="opened-folder.png" />
     <None Remove="save %281%29.png" />
     <None Remove="save-as.png" />
+    <None Remove="UserControls\add_image.png" />
     <None Remove="UserControls\back.png" />
     <None Remove="UserControls\next.png" />
     <None Remove="UserControls\pause.png" />
@@ -36,6 +37,7 @@
     <Resource Include="Images\pause.png" />
     <Resource Include="Images\play.png" />
     <Resource Include="Images\next.png" />
+    <Resource Include="Images\add_image.png" />
   </ItemGroup>
 
 </Project>
