@@ -27,17 +27,16 @@ public partial class MainWindow : Window
 
 
     private ObservableCollection<GalaryImage> galaryImages;
-
     public ObservableCollection<GalaryImage> GalaryImages
     {
         get { return galaryImages; }
-        set 
+        set
         {
             galaryImages = value;
             OnPropertyChanged();
         }
     }
-    
+
 
     public BitmapImage CurrentPicture { get; set; }
 
@@ -85,7 +84,11 @@ public partial class MainWindow : Window
         Add_Image_Window add = new();
         add.ShowDialog();
 
-        Repository.FakeRepo.GetGalaryImages().Add(add.Image);
+        BitmapImage picture = new BitmapImage(new Uri(add.filePath!, UriKind.Relative));
+        UserControl_Photos uc = new(picture, add.Image);
+
+        wrapPanel.Children.Add(uc);
         GalaryImages.Add(add.Image);
+
     }
 }
