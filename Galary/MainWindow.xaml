@@ -63,8 +63,8 @@
             </MenuItem>
 
             <MenuItem FontSize="{StaticResource MenuSize}" Header="View">
-                <MenuItem FontSize="{StaticResource MenuItemSize}" Header="Tiles" ></MenuItem>
-                <MenuItem FontSize="{StaticResource MenuItemSize}" Header="Small Icon" ></MenuItem>
+                <MenuItem FontSize="{StaticResource MenuItemSize}"  Click="MenuItem_Click_1" Header="Large Icon" ></MenuItem>
+                <MenuItem FontSize="{StaticResource MenuItemSize}" Click="MenuItem_Click" Header="Small Icon" ></MenuItem>
                 <MenuItem FontSize="{StaticResource MenuItemSize}" Header="Details" ></MenuItem>
             </MenuItem>
 
@@ -75,7 +75,9 @@
     
         <!-- Galary -->
         <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto">
-            <UniformGrid Name="wrapPanel" Background="{StaticResource wrapPanelColor}">
+            <UniformGrid Name="wrapPanel"
+                         Columns="3"
+                         Background="{StaticResource wrapPanelColor}">
                 
             </UniformGrid>
         </ScrollViewer>    

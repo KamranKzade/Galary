@@ -3,6 +3,7 @@ using Galary.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
 namespace Galary;
@@ -48,5 +49,10 @@ public partial class MainWindow : Window
         window.ShowDialog();
 
     }
+
+    private void MenuItem_Click(object sender, RoutedEventArgs e) => wrapPanel.Columns = 4;
+    private void MenuItem_Click_1(object sender, RoutedEventArgs e) => wrapPanel.Columns = 2;
+   
+
 
 }
